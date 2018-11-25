@@ -142,17 +142,20 @@ function shiftstonedCardList(onDone) {
 
     getPage('www.shiftstoned.com', '/epc/', function (url, body) {
         body.split('\n').forEach(function (line) {
-            var cardRegex;
+            var cardRegex, cost;
 
             cardRegex =
                 /Set([0-9]+) #([0-9]+);([^;]*);([^;]*);([^;]*);([^;]*)/;
             cardMatch = line.match(cardRegex);
             if (cardMatch) {
+                /*  Store only the primary cost of the card  */
+                cost = cardMatch[4].split(',')[0].trim();
+
                 cards.push({
                     set: cardMatch[1],
                     number: cardMatch[2],
                     influence: cardMatch[3].trim(),
-                    cost: cardMatch[4].trim(),
+                    cost: cost,
                     name: cardMatch[5].trim(),
                     flags: cardMatch[6].trim()
                 });
