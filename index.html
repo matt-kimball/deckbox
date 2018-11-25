@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<!--
+
+    Eternal Deckbox Display
+    Copyright (C) 2018  Matt Kimball
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+-->
+
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Deckbox for Eternal</title>
+
+    <link rel="stylesheet" href="site.css">
+
+    <link rel="stylesheet" href="https://eternal.deckbox.info/deckbox.css">
+    <script defer src="https://eternal.deckbox.info/deckbox.js"></script>
+
+</head>
+
+<body>
+
+    <div class="guide-title">
+        Deckbox for Eternal
+    </div>
+
+    <div class="body-text">
+        <p>
+        Deckbox is a widget for displaying decks for <a href="https://www.direwolfdigital.com/eternal/">the Eternal Card Game</a> in web pages.  It is designed to be quickly and easily embedded into existing web sites.
+
+        <p>
+        <div class="deckbox-embed">
+            <div class="deckbox"
+                    data-deckbox-title="Skycrag Aggro"
+                    data-deckbox-href="https://eternalwarcry.com/decks/details/xjuq9giMtAM/skycrag">
+                4 Grenadin Drone (Set1 #5)
+                4 Longbarrel (Set4 #5)
+                4 Oni Ronin (Set1 #13)
+                4 Permafrost (Set1 #193)
+                4 Pyroknight (Set1 #16)
+                4 Snowcrust Yeti (Set2 #105)
+                4 Torch (Set1 #8)
+                4 Champion of Fury (Set2 #187)
+                2 Ornate Katana (Set1 #23)
+                4 Rakano Outlaw (Set1 #20)
+                4 Ixtun Merchant (Set4 #21)
+                4 Shogun's Scepter (Set1 #26)
+                4 Vadius, Clan Father (Set2 #191)
+                4 Diplomatic Seal (Set1 #425)
+                7 Fire Sigil (Set1 #1)
+                5 Primal Sigil (Set1 #187)
+                4 Seat of Fury (Set0 #53)
+                2 Shugo Standard (Set4 #1)
+                3 Skycrag Banner (Set2 #186)
+                --------------MARKET---------------
+                1 Mindfire (Set4 #6)
+                1 Warhelm (Set1 #14)
+                1 Factory Quota (Set4 #17)
+                1 Obliterate (Set1 #48)
+                1 Skycrag Banner (Set2 #186)
+            </div>
+        </div>
+
+        <p>
+        To get started, you'll need to add the deckbox Javascript and CSS to the <span class="inline-code">head</span> of your HTML:
+
+        <p>
+        <div class="code-block">&lt;link rel="stylesheet" href="https://eternal.deckbox.info/deckbox.css"&gt;
+&lt;script defer src="https://eternal.deckbox.info/deckbox.js"&gt;&lt;/script&gt;</div>
+
+        <p>
+        Then, in the <span class="inline-code">body</span> of your HTML, add a <span class="inline-code">div</span> of class <span class="inline-code">deckbox</span>, and include a decklist. The decklist format is the same format used by Eternal when exporting a deck.
+
+        <p>
+        <div class="code-block">&lt;div class="deckbox"
+        data-deckbox-title="Toshi's Feastcalling Deck"
+        data-deckbox-href=
+            "https://eternalwarcry.com/decks/details/p_L_CIYeBEA/toshis-deck"&gt;
+    3 Annihilate (Set1 #269)
+    3 Cauldron Cookbook (Set1004 #2)
+    4 Dark Return (Set1 #250)
+    1 End of the Story (Set4 #138)
+    4 Harsh Rule (Set1 #172)
+    4 Ixtun Merchant (Set4 #21)
+    1 Lingering Influence (Set4 #100)
+    3 Rizahn, Greatbow Master (Set4 #246)
+    4 Seek Power (Set1 #408)
+    4 Slay (Set2 #236)
+    4 Stonepowder Alchemist (Set2 #239)
+    4 Torch (Set1 #8)
+    4 Vara, Vengeance-Seeker (Set1004 #19)
+    2 Vicious Highwayman (Set3 #275)
+    4 Zuberi, Outlands Warlord (Set4 #37)
+    3 Crest of Chaos (Set3 #268)
+    3 Crest of Glory (Set4 #243)
+    3 Crest of Vengeance (Set3 #264)
+    2 Fire Sigil (Set1 #1)
+    2 Justice Sigil (Set1 #126)
+    3 Seat of Chaos (Set0 #60)
+    3 Seat of Glory (Set0 #56)
+    3 Seat of Vengeance (Set0 #55)
+    2 Shadow Sigil (Set1 #249)
+    2 Shugo Standard (Set4 #1)
+    --------------MARKET---------------
+    1 Bore (Set1003 #1)
+    1 Cauldron Cookbook (Set1004 #2)
+    1 Rizahn, Greatbow Master (Set4 #246)
+    1 Shugo Standard (Set4 #1)
+    1 Vicious Highwayman (Set3 #275)
+&lt;/div&gt;</div>
+
+        <p>
+        That's it!
+
+        <p>
+        Deckbox will automatically generate a display with the cards in the deck categorized by function and listed with their rarity and power / influence costs. Each card in the list can be examined by hovering over the card &mdash; when mousing over the name of a card, a corresponding image will appear.
+
+        <p>
+        <span class="inline-code">data-deckbox-title</span> is used to give the deck a name.  <span class="inline-code">data-deckbox-href</span> is optional.  If included, it will link the deck title to that location.
+
+        <p>
+        Here is how the above code looks:
+
+        <p>
+        <div class="deckbox-embed">
+            <div class="deckbox"
+                    data-deckbox-title="Toshi's Feastcalling Deck"
+                    data-deckbox-href="https://eternalwarcry.com/decks/details/p_L_CIYeBEA/toshis-deck">
+                3 Annihilate (Set1 #269)
+                3 Cauldron Cookbook (Set1004 #2)
+                4 Dark Return (Set1 #250)
+                1 End of the Story (Set4 #138)
+                4 Harsh Rule (Set1 #172)
+                4 Ixtun Merchant (Set4 #21)
+                1 Lingering Influence (Set4 #100)
+                3 Rizahn, Greatbow Master (Set4 #246)
+                4 Seek Power (Set1 #408)
+                4 Slay (Set2 #236)
+                4 Stonepowder Alchemist (Set2 #239)
+                4 Torch (Set1 #8)
+                4 Vara, Vengeance-Seeker (Set1004 #19)
+                2 Vicious Highwayman (Set3 #275)
+                4 Zuberi, Outlands Warlord (Set4 #37)
+                3 Crest of Chaos (Set3 #268)
+                3 Crest of Glory (Set4 #243)
+                3 Crest of Vengeance (Set3 #264)
+                2 Fire Sigil (Set1 #1)
+                2 Justice Sigil (Set1 #126)
+                3 Seat of Chaos (Set0 #60)
+                3 Seat of Glory (Set0 #56)
+                3 Seat of Vengeance (Set0 #55)
+                2 Shadow Sigil (Set1 #249)
+                2 Shugo Standard (Set4 #1)
+                --------------MARKET---------------
+                1 Bore (Set1003 #1)
+                1 Cauldron Cookbook (Set1004 #2)
+                1 Rizahn, Greatbow Master (Set4 #246)
+                1 Shugo Standard (Set4 #1)
+                1 Vicious Highwayman (Set3 #275)
+            </div>
+        </div>
+
+        <p>
+        The source code for deckbox is <a href="https://github.com/matt-kimball/deckbox">available on github</a>, and is licensed under the GNU GPL version 2.
+
+        <p>
+        If you have comments or suggestions, please get in touch.  I can be reached via email at <a href="mailto:matt.kimball@gmail.com">matt.kimball@gmail.com</a> or on <a href="https://discord.gg/">Discord</a> as Apostatic#9058.
+    </div>
+
+</body>
+</html>
