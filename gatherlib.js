@@ -32,8 +32,9 @@ const unescape = require('unescape');
     completion.  On error, report to stderr and exit.
 */
 function getPage(host, location, onBody) {
-    https.get({ hostname: host, path: location }, (response) => {
+    https.get({ hostname: host, path: location }, function (response) {
         if (response.statusCode === 301) {
+            response.destroy();
             return getPage(host, response.headers.location, onBody);
         }
 
@@ -43,16 +44,19 @@ function getPage(host, location, onBody) {
         }
 
         body = '';
-        response.on('data', (data) => {
+        response.on('data', function (data) {
             body += data.toString('utf-8');
         });
-        response.on('end', () => {
+        response.on('end', function () {
             var url = 'https://' + host + location;
 
             onBody(url, body);
         });
-    }).on('error', (e) => {
+    }).on('error', function (e) {
         process.stderr.write("HTTP error: " + e.message + "\n");
+        process.exit(1);
+    }).on('timeout', function (e) {
+        process.stderr.write("timeout");
         process.exit(1);
     });
 }
@@ -70,7 +74,7 @@ function warcryInfo(set, card, onInfo) {
     var path;
 
     path = '/cards/details/' + String(set) + '-' + String(card) + '/';
-    getPage('eternalwarcry.com', path, (url, body) => {
+    getPage('eternalwarcry.com', path, function (url, body) {
         var info, imageRegex, rarityRegex, typeRegex;
         var imageMatch, rarityMatch, typeMatch, image, rarity, typeText, type;
 
@@ -136,8 +140,8 @@ function warcryInfo(set, card, onInfo) {
 function shiftstonedCardList(onDone) {
     var cards = [];
 
-    getPage('www.shiftstoned.com', '/epc/', (url, body) => {
-        body.split('\n').forEach((line) => {
+    getPage('www.shiftstoned.com', '/epc/', function (url, body) {
+        body.split('\n').forEach(function (line) {
             var cardRegex;
 
             cardRegex =
@@ -168,7 +172,7 @@ function shiftstonedCardList(onDone) {
 function gatherCards(onCards) {
     allCards = {};
 
-    shiftstonedCardList((cardLibrary) => {
+    shiftstonedCardList(function (cardLibrary) {
         var index = 0;
 
         /*
@@ -187,7 +191,7 @@ function gatherCards(onCards) {
             }
 
             card = cardLibrary[index];
-            warcryInfo(card.set, card.number, (info) => {
+            warcryInfo(card.set, card.number, function (info) {
                 var id;
 
                 id = "Set" + card.set + " #" + card.number;
@@ -197,7 +201,12 @@ function gatherCards(onCards) {
                 allCards[id] = info;
 
                 index += 1;
-                nextCard();
+
+                /*
+                    Delay slightly between cards to avoid hammering
+                    eternalwarcry.
+                */
+                setTimeout(nextCard, 100);
             });
         }
 
@@ -207,6 +216,6 @@ function gatherCards(onCards) {
 
 
 /*  Gather the card library, then dump the JSON to stdout  */
-gatherCards((cards) => {
+gatherCards(function (cards) {
     console.log(JSON.stringify(cards));
 });
