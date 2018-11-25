@@ -1,0 +1,231 @@
+/*
+
+    Eternal Deckbox Display
+    Copyright (C) 2018  Matt Kimball
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Andada');
+
+.deckbox {
+    box-sizing: border-box;
+    width: 700px;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 0px;
+    padding: 0px;
+    outline: 0px;
+    border: 1px #000000 solid;
+
+    vertical-align: baseline;
+    line-height: 1;
+
+    background-color: #FFFFFF;
+    color: #000000;
+
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.deckbox-card-image {
+    position: fixed;
+    width: 250px;
+}
+
+.deckbox-header {
+    padding: 16px;
+
+    color: #F8CD8E;
+    background-color: #131313;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.deckbox-header a:link,
+.deckbox-header a:visited {
+    color: #F8CD8E;
+    text-decoration: none;
+}
+
+.deckbox-title {
+    font-size: 30px;
+    font-family: 'Andada', serif;
+}
+
+.deckbox-copy-button {
+    position: relative;
+
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px #000000 solid;
+
+    cursor: pointer;
+}
+
+.deckbox-copy-popup {
+    position: absolute;
+    visibility: hidden;
+
+    width: 180px;
+    top: -40px;
+    left: -65px;
+
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px #000000 solid;
+
+    cursor: default;
+}
+
+.deckbox-body {
+    display: flex;
+    flex-direction: row;
+
+    padding: 16px;
+    background-color: #9D978E;
+}
+
+.deckbox-body a:link, 
+.deckbox-body a:visited {
+    color: #000000;
+    text-decoration: none;
+}
+
+.deckbox-column {
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.deckbox-section-header {
+    height: 1.3em;
+    font-weight: bolder;
+}
+
+.deckbox-section-header-space {
+    height: 0.5em;
+}
+
+.deckbox-card-line {
+    height: 1.3em;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.deckbox-card-count {
+    width: 1.5em;
+    text-align: right;
+    padding-right: 0.5em;
+}
+
+.deckbox-card-rarity {
+    width: 16px;
+}
+
+.deckbox-card-rarity-common {
+    background-image: url("img/icon-common.png");
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+.deckbox-card-rarity-uncommon {
+    background-image: url("img/icon-uncommon.png");
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+.deckbox-card-rarity-rare {
+    background-image: url("img/icon-rare.png");
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+.deckbox-card-rarity-legendary {
+    background-image: url("img/icon-legendary.png");
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+.deckbox-card-rarity-promo {
+    background-image: url("img/icon-promo.png");
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+.deckbox-card-name {
+    width: 190px;
+    padding-left: 0.5em;
+}
+
+.deckbox-card-cost {
+    display: flex;
+    justify-content: flex-end;
+
+    font-weight: bolder;
+    width: 80px;
+}
+
+.deckbox-fire-icon {
+    width: 16px;
+
+    background-image: url("img/icon-fire.png");
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+.deckbox-time-icon {
+    width: 16px;
+
+    background-image: url("img/icon-time.png");
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+.deckbox-justice-icon {
+    width: 16px;
+
+    background-image: url("img/icon-justice.png");
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+.deckbox-primal-icon {
+    width: 16px;
+
+    background-image: url("img/icon-primal.png");
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+.deckbox-shadow-icon {
+    width: 16px;
+
+    background-image: url("img/icon-shadow.png");
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
