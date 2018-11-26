@@ -20,7 +20,6 @@
 */
 
 @import url('https://fonts.googleapis.com/css?family=Andada');
-@import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
 
 .guide-title {
     text-align: center;
@@ -34,7 +33,7 @@
     width: 800px;
     margin: auto;
 
-    font-family: 'Source Serif Pro', serif;
+    font-family: serif;
     font-size: 20px;
 }
 
