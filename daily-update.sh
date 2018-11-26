@@ -44,7 +44,7 @@ fi
 
 #  If the library hasn't changed since the last update, we can stop here
 git diff --exit-code library.json
-if [ $? -ne 0 ]; then
+if [ $? -eq 0 ]; then
     echo No change
     exit 0
 fi
