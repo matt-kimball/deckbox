@@ -467,12 +467,12 @@ function deckboxGenerate(
         header = deckboxCreateAppendElement(div, "div", "deckbox-header");
 
         titleDiv = deckboxCreateAppendElement(header, "div", "deckbox-title");
-        if (href.length) {
+        if (href && title) {
             link = deckboxCreateAppendElement(
                 titleDiv, "a", "deckbox-title-link");
             link.setAttribute("href", href);
             deckboxCreateAppendText(link, title);
-        } else {
+        } else if (title) {
             deckboxCreateAppendText(titleDiv, title);
         }
 
